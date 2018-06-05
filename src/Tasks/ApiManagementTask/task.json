@@ -1,0 +1,127 @@
+{
+  "id": "1978a270-1d22-11e8-bb9b-aba1c24a2479",
+  "name": "APIManagement",
+  "friendlyName": "APIManagement",
+  "description": "APIManagement",
+  "author": "Janusz Nowak",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "runsOn": [
+    "Agent",
+    "DeploymentGroup"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "66",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "APIManagement $(message)",
+  "inputs": [
+    {
+      "name": "ConnectedServiceNameSelector",
+      "type": "pickList",
+      "label": "Azure Connection Type",
+      "required": false,
+      "helpMarkDown": "",
+      "defaultValue": "ConnectedServiceNameARM",
+      "options": {
+        "ConnectedServiceNameARM": "Azure Resource Manager"
+      }
+    },
+    {
+      "name": "ConnectedServiceName",
+      "type": "connectedService:Azure",
+      "label": "Azure Classic Subscription",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Azure Classic subscription to configure before running PowerShell",
+      "visibleRule": "ConnectedServiceNameSelector = ConnectedServiceName"
+    },
+    {
+      "name": "ConnectedServiceNameARM",
+      "type": "connectedService:AzureRM",
+      "label": "Azure RM Subscription",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Azure Resource Manager subscription to configure before running PowerShell",
+      "visibleRule": "ConnectedServiceNameSelector = ConnectedServiceNameARM"
+    },
+    {
+      "name": "apiManagementRg",
+      "type": "pickList",
+      "label": "APIM Resource Group Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Resource group name of APIM Instance.",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }
+    
+    },
+    {
+      "name": "apiManagementName",
+      "type": "pickList",
+      "label": "APIM Instance Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "API instance name in Resorce Group",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }
+    },
+    {
+      "name": "apiUrl",
+      "type": "pickList",
+      "label": "API Url for defintion",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "API Url for getting definition",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }
+    },
+    {
+      "name": "Specificationformat",
+      "type": "pickList",
+      "label": "Specification Format",
+      "defaultValue": "swagger",
+      "required": true,
+      "options": {
+        "swagger": "swagger",
+        "wadl": "wadl",
+        "wsdl": "wsdl"
+      },
+      "properties": {
+        "EditableOptions": "true"
+      }
+    },
+    {
+      "name": "apiUrlSuffix",
+      "type": "pickList",
+      "label": "apiUrlSuffix",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "apiUrlSuffix",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }
+    }    
+  ],    
+  "execution": {    
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\sample.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

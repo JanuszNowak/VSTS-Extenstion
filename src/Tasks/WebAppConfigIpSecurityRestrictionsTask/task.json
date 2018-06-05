@@ -1,0 +1,126 @@
+{
+  "id": "4eb0462a-4746-4abc-83bf-867d821bb706",
+  "name": "WebAppConfigIpSecurityRestrictions",
+  "friendlyName": "WebAppConfigIpSecurityRestrictions",
+  "description": "WebAppConfigIpSecurityRestrictions",
+  "author": "Janusz Nowak",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "runsOn": [
+    "Agent",
+    "DeploymentGroup"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "691",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "APIManagement $(message)",
+  "inputs": [
+    {
+      "name": "ConnectedServiceNameSelector",
+      "type": "pickList",
+      "label": "Azure Connection Type",
+      "required": false,
+      "helpMarkDown": "",
+      "defaultValue": "ConnectedServiceNameARM",
+      "options": {
+        "ConnectedServiceNameARM": "Azure Resource Manager"
+      }
+    },
+    {
+      "name": "ConnectedServiceName",
+      "type": "connectedService:Azure",
+      "label": "Azure Classic Subscription",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Azure Classic subscription to configure before running PowerShell",
+      "visibleRule": "ConnectedServiceNameSelector = ConnectedServiceName"
+    },
+    {
+      "name": "ConnectedServiceNameARM",
+      "type": "connectedService:AzureRM",
+      "label": "Azure RM Subscription",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Azure Resource Manager subscription to configure before running PowerShell",
+      "visibleRule": "ConnectedServiceNameSelector = ConnectedServiceNameARM"
+    },
+    {
+      "name": "resourceGroupName",
+      "type": "pickList",
+      "label": "resource Group Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "resourceGroupName.",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }    
+    },
+    {
+      "name": "resourceName",
+      "type": "pickList",
+      "label": "resource Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "resourceName.",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }    
+    },
+    {
+      "name": "ipListUrl",
+      "type": "pickList",
+      "label": "Url to xml file with cidrs",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Url to xml file with cidrs",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }
+    },
+    {
+      "name": "variableValue",
+      "type": "pickList",
+      "label": "xml value",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "xml of cidrs",
+      "options": {},
+      "properties": {
+        "EditableOptions": "true"
+      }
+    },
+    {
+      "name": "operationType",
+      "type": "pickList",
+      "label": "OperationType Type",
+      "defaultValue": "SetFromVariable",
+      "required": true,
+      "options": {
+        "RemoveAll": "RemoveAll",
+        "SetFromUrl": "SetFromUrl",
+        "SetFromVariable": "SetFromVariable"
+      },
+      "properties": {
+        "EditableOptions": "true"
+      }
+    }        
+  ],    
+  "execution": {    
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\sample.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

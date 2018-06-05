@@ -1,0 +1,10 @@
+1	Platform-as-a-Service
+1	serverless
+1	devops
+1	azure
+1	vsts
+1	PaaS
+1	SaaS
+1	api
+--------------------CloudConfig v2.3--------------------
+{"seed":2010,"ZM_shape":{"char":"f04d","scale":1.1,"top":4,"weightFactor":10},"ZM_curShape":"fa-stop","ZM_curTheme":"t1","ZM_userWeightAdjust":56,"ZM_userGridSizeAdjust":0,"ZM_canvasWidth":640,"ZM_canvasHeight":480,"ZM_googleFont":null,"ZM_colorMode":"custom","ZM_gradientColors":[],"CO_shape":"circle","CO_backgroundColor":"rgb(0, 171, 236)","CO_backgroundImage":null,"CO_colorArray":["rgb(252, 255, 255)"],"CO_drawMask":false,"CO_maskColor":"rgba(0, 0, 0, 0.1)","CO_fontFamily":"'Bowlby One SC'","CO_wordDirection":"hor","CO_inverted":false}

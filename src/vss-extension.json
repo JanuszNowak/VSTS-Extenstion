@@ -1,0 +1,49 @@
+{
+    "manifestVersion": 1,
+    "id": "DevOpsAzureAndVstsExtension",
+    "version": "0.1.971",
+    "name": "DevOpsAzureAndVstsExtension",
+    "description": "Visual Studio Services extension with multiple tasks for Azure.",
+    "publisher": "janono",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "icons": {
+         "default": "images/icon.png"
+     },
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/ApiManagementTask"
+            }
+        },
+        {
+            "id": "custom-build-release-task2",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/WebAppConfigIpSecurityRestrictionsTask"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.work",
+        "vso.release"
+    ],
+    "files": [        
+        {
+            "path": "Tasks",
+            "addressable": true,
+            "packagePath": "Tasks"
+        }
+    ]
+}
